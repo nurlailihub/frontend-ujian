@@ -1,0 +1,39 @@
+Contoh 1: Tabel mahasiswa (paling aman sedunia kampus)
+CREATE TABLE mahasiswa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    nim VARCHAR(20)
+);
+
+
+Ini hampir mustahil ditolak dosen. Bahkan dosen yang suka nyari kesalahan.
+
+Contoh 2: Tabel produk
+CREATE TABLE produk (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_produk VARCHAR(100),
+    harga INT
+);
+
+
+Cocok kalau aplikasimu agak “bisnis” walau cuma ujian.
+
+Contoh 3: Tabel pengumuman
+CREATE TABLE pengumuman (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    judul VARCHAR(150),
+    isi TEXT
+);
+
+
+Kelihatan akademis. Dosen biasanya langsung angguk.
+
+Contoh 4: Tabel absensi
+CREATE TABLE absensi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    status VARCHAR(20)
+);
+
+
+Status bisa “Hadir”, “Izin”, “Alpha”. Simpel, manusiawi.
