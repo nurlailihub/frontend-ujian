@@ -15,13 +15,15 @@ const API_URL = 'https://noncommunistical-curably-alisa.ngrok-free.dev/api/ujian
 type DataUjian = {
   id: number;
   nama: string;
-  nim: string;
+  status: string;
+  tanggal_lahir: string;
 };
 
 export default function App() {
   const [data, setData] = useState<DataUjian[]>([]);
   const [nama, setNama] = useState('');
-  const [nim, setNim] = useState('');
+  const [status, setstatus] = useState('');
+  const [tanggal_lahir, setTanggal] = useState('');
 
   // GET DATA
   const getData = async () => {
@@ -36,8 +38,8 @@ export default function App() {
 
   // POST DATA
   const submitData = async () => {
-    if (nama.trim() === '' || nim.trim() === '') {
-      Alert.alert('Peringatan', 'Nama dan NIM wajib diisi');
+    if (nama.trim() === '' || status.trim() === '') {
+      Alert.alert('Peringatan', 'Nama dan status wajib diisi');
       return;
     }
 
@@ -50,7 +52,8 @@ export default function App() {
         },
         body: JSON.stringify({
           nama: nama,
-          nim: nim,
+          status: status,
+          tanggal_lahir: tanggal_lahir,
         }),
       });
 
@@ -59,7 +62,8 @@ export default function App() {
       }
 
       setNama('');
-      setNim('');
+      setstatus('');
+      setTanggal('');
       getData();
       Alert.alert('Sukses', 'Data berhasil disimpan');
     } catch (error) {
@@ -75,7 +79,8 @@ export default function App() {
   const renderItem = ({ item }: { item: DataUjian }) => (
     <View style={styles.card}>
       <Text style={styles.text}>Nama: {item.nama}</Text>
-      <Text style={styles.text}>NIM: {item.nim}</Text>
+      <Text style={styles.text}>status: {item.status}</Text>
+       <Text style={styles.text}>tanggal_lahir: {item.tanggal_lahir}</Text>
     </View>
   );
 
@@ -95,16 +100,26 @@ export default function App() {
         />
 
         <TextInput
-          placeholder="NIM"
+          placeholder="status saya"
           placeholderTextColor="#888"
-          value={nim}
-          onChangeText={setNim}
+          value={status}
+          onChangeText={setstatus}
           style={styles.input}
-          keyboardType="numeric"
+          autoCapitalize="words"
+        />
+
+
+        <TextInput
+          placeholder="tanggal_lahir saya"
+          placeholderTextColor="#888"
+          value={tanggal_lahir}
+          onChangeText={setTanggal}
+          style={styles.input}
+          autoCapitalize="words"
         />
 
         <TouchableOpacity style={styles.button} onPress={submitData}>
-          <Text style={styles.buttonText}>Simpan</Text>
+          <Text style={styles.buttonText}>simpan</Text>
         </TouchableOpacity>
       </View>
 
